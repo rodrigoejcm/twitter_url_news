@@ -1,0 +1,7 @@
+CREATE DATABASE twitter_new CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+--create user twitter_user@localhost;
+--SET PASSWORD FOR twitter_user@localhost = password('twitter_pass');
+GRANT ALL PRIVILEGES ON twitter_new.* to twitter_user@localhost IDENTIFIED BY "twitter_pass";
+FLUSH PRIVILEGES;
+
+

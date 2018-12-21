@@ -1,0 +1,825 @@
+<!doctype html><html class="no-js" lang="en"><head><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UwcOV1NACwcHVlFbAw=="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(21),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(22),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){M++,N=y.hash,this[u]=g.now()}function o(){M--,y.hash!==N&&i(0,!0);var t=g.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+y,e])}function a(t,e){t.on(e,function(){this[e]=g.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,y=w.location,g=t("loader");if(w[v]&&g.xhrWrappable){var b=t(10),x=t(11),E=t(8),O=t(6),P=t(13),R=t(7),T=t(14),L=t(9),j=t("ee"),S=j.get("tracer");t(15),g.features.spa=!0;var N,M=0;j.on(u,r),j.on(p,r),j.on(d,o),j.on(l,o),j.buffer([u,d,"xhr-done","xhr-resolved"]),O.buffer([u]),P.buffer(["setTimeout"+c,"clearTimeout"+s,u]),T.buffer([u,"new-xhr","send-xhr"+s]),R.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),b.buffer([u]),x.buffer(["propagate",p,l,"executor-err","resolve"+s]),S.buffer([u,"no-"+u]),L.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+s),a(j,"xhr-resolved"),a(j,"xhr-done"),a(R,m+s),a(R,m+"-done"),a(L,"new-jsonp"),a(L,"jsonp-end"),a(L,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,M>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(8);var b=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,e){var n=t[0];n instanceof b&&i("bst",[n,e,this.bstStart,g.now()])}),a.on(m,function(t,e,n){this.bstStart=g.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+l,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t(24)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=r.apply(this,arguments);return o.emit(n+"start",arguments,t),t.then(function(e){return o.emit(n+"end",[null,e],t),e},function(e){throw o.emit(n+"end",[e],t),e})})}var o=t("ee").get("fetch"),i=t(21);e.exports=o;var a=window,s="fetch-",c=s+"body-",f=["arrayBuffer","blob","json","text","formData"],u=a.Request,d=a.Response,p=a.fetch,l="prototype";u&&d&&p&&(i(f,function(t,e){r(u[l],e,c),r(d[l],e,c)}),r(a,"fetch",s),o.on(s+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(s+"done",[null,e],n)}else o.emit(s+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t(24)(r);e.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t(24)(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-"),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t(24)(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=s(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t(24),a=t("ee").get("promise"),s=i(a),c=t(21),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),s=f.resolve(i);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this),t[1]=s(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),s.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=s(t[0],"cb-",this),t[1]=s(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t(24)(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t(24)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t(24)(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,b),b.prototype=l.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!e.aborted){if(n.duration=a.now()-this.startTime,4===t.readyState){e.status=t.status;var i=o(t,this.lastSize);if(i&&(n.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(e.cat=c.split(", ").pop())}}else e.status=0;n.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime])}}}function o(t,e){var n=t.responseType;if("json"===n&&null!==e)return e;var r="arraybuffer"===n||"blob"===n||"json"===n?t.response:t.responseText;return h(r)}function i(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(16),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,p=t("id"),l=t(19),h=t(18),m=window.XMLHttpRequest;a.features.xhr=!0,t(14),f.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,l&&(l>34||l<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=h(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{f.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<d;s++)e.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),f.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],e)}),f.on("removeEventListener-end",function(t,e){e instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],e)}),f.on("fn-start",function(t,e,n){e instanceof m&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,e){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)})}},{}],16:[function(t,e,n){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!e.protocol||":"===e.protocol||e.protocol===n.protocol,a=e.hostname===document.domain&&e.port===n.port;return r.sameOrigin=i&&(!e.hostname||a),r}},{}],17:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(21),s=t(22),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],20:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],21:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],22:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],23:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],24:[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(22),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[n]];return d&&d.push([b,n,r,a]),a}}function l(t,e){y[t]=m(t).concat(e)}function h(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",g[n]=e,e in u||(u[e]=[])})}var y={},g={},b={on:l,addEventListener:l,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var s="nr@context",c=t("gos"),f=t(21),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=x.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(g,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+x.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(21),u=t("ee"),d=t(20),p=window,l=p.document,h="addEventListener",m="attachEvent",v=p.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:v,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1099.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=e.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(17),l[h]?(l[h]("DOMContentLoaded",i,!1),p[h]("load",r,!1)):(l[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(23)},{}]},{},["loader",2,15,5,3,4]);</script><script>
+   try {var _sf_startpt=(new Date()).getTime();} catch(e){}
+</script>
+<meta itemscope itemtype="https://schema.org/SpeakableSpecification" itemref="speakable" /><title>Michael Flynn's Sentencing Delayed By Judge Sullivan In Case Of Lying To FBI : NPR</title><meta id="speakable" itemprop="cssSelector" content="[data-is-speakable]" /><meta charset="utf-8" /><meta name="robots" content="noarchive,index,follow" /><meta name="Rating" content="General" /><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" /><meta name="npr-pjax" /><meta name="date" content="2018-12-18" /><link rel="canonical" href="https://www.npr.org/2018/12/18/677558000/federal-judge-delays-michael-flynn-sentencing-in-case-of-lying-to-feds" /><meta name="description" content="The judge ordered both sides to file status reports by March 13. He said he has outstanding questions, including how the Russia investigation was impeded and the impact of Flynn's lies on the inquiry." /><link rel="alternate" type="application/rss+xml" title="National Security" href="/rss/rss.php?id=1122" /><link rel="alternate" type="application/json" title="National Security" href="https://www.npr.org/feeds/1122/feed.json" /><link rel="apple-touch-icon" sizes="180x180" href="https://media.npr.org/templates/favicon/favicon-180x180.png" /><link rel="icon" sizes="96x96" href="https://media.npr.org/templates/favicon/favicon-96x96.png" /><link rel="icon" sizes="32x32" href="https://media.npr.org/templates/favicon/favicon-32x32.png" /><link rel="icon" sizes="16x16" href="https://media.npr.org/templates/favicon/favicon-16x16.png" /><meta property="og:title" content="Federal Judge Delays Michael Flynn Sentencing In Case Of Lying To Feds" /><meta property="og:url" content="https://www.npr.org/2018/12/18/677558000/federal-judge-delays-michael-flynn-sentencing-in-case-of-lying-to-feds" /><meta property="og:type" content="article" /><meta property="og:description" content="The judge ordered both sides to file status reports by March 13. He said he has outstanding questions, including how the Russia investigation was impeded and the impact of Flynn's lies on the inquiry." /><meta property="og:image" content="https://media.npr.org/assets/img/2018/12/18/ap_18352542997092flynndec18_wide-12df3ce5ba6df43f792eed57f32bf2bca429460f.jpg?s=1400" /><meta property="og:image" content="https://media.npr.org/assets/img/2018/12/17/ap_18351752509815comey_wide-d13f7ea23b9e1469d9560beb7644907663b5d37c.jpg?s=1400" /><meta property="og:site_name" content="NPR.org" /><meta property="fb:app_id" content="138837436154588" /><meta property="fb:pages" content="10643211755" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:site" content="@NPR" /><meta name="twitter:domain" content="npr.org" /><meta name="twitter:image:src" content="https://media.npr.org/assets/img/2018/12/18/ap_18352542997092flynndec18_wide-12df3ce5ba6df43f792eed57f32bf2bca429460f.jpg?s=1400" /><script id="npr-vars">
+   window.NPR = window.NPR || {};
+NPR.ServerConstants = {"cbHost":"npr.org","webHost":"https:\/\/www.npr.org","embedHost":"https:\/\/www.npr.org","webHostSecure":"https:\/\/secure.npr.org","apiHost":"https:\/\/api.npr.org","staticAssetHost":"https:\/\/s.npr.org","serverMediaCache":"https:\/\/media.npr.org","googleAnalyticsAccount":"UA-5828686-4","nielsenSFCode":"dcr","nielsenAPN":"NPR-dcr","shouldShowHPLocalContent":false};
+NPR.serverVars = {"storyId":"677558000","facebookAppId":"138837436154588","webpackPublicPath":"https:\/\/s.npr.org\/templates\/javascript\/dist\/bundles\/","persistenceVersion":"573b3b7d98f7a5c48d0d8509550e7cf3","isBuildOut":true,"topicIds":["P1122","1001","1002","1014","1070"],"primaryTopic":"National Security","topics":["National Security","News","Home Page Top Stories","Politics","Law"],"theme":"1122","programId":"All Things Considered","program":"2","aggIds":["2","1001","1002","1014","1070","1122","191676894","312150170","434975886","677716954"],"byline":["Carrie Johnson","Philip Ewing"],"pubDate":"2018121813","pageTypeId":"1","title":"Federal Judge Delays Michael Flynn Sentencing In Case Of Lying To Feds","publisherOrgId":"1","rocketfuelCode":20501671};
+</script>
+<script type="text/javascript" src="https://cdn.optimizely.com/js/11107397707.js">
+   </script>
+<script type="text/javascript" src="https://s.npr.org/templates/javascript/lib/modernizr/modernizr.custom.js">
+   </script>
+<script type="text/javascript" src="https://s.npr.org/templates/javascript/navigation/global-navigation-dropdowns.js?4845f254a8fa711b03d75b1b9ceee5c3">
+   </script>
+<script>
+   !function(c){function e(a){if(d[a])return d[a].exports;var b=d[a]={exports:{},id:a,loaded:!1};return c[a].call(b.exports,b,b.exports,e),b.loaded=!0,b.exports}var a=window.webpackJsonp;window.webpackJsonp=function(f,t){for(var n,r,o=0,i=[];o<f.length;o++)r=f[o],b[r]&&i.push.apply(i,b[r]),b[r]=0;for(n in t){var s=t[n];switch(typeof s){case"object":c[n]=function(e){var a=e.slice(1),d=e[0];return function(e,b,f){c[d].apply(this,[e,b,f].concat(a))}}(s);break;case"function":c[n]=s;break;default:c[n]=c[s]}}for(a&&a(f,t);i.length;)i.shift().call(null,e);if(t[0])return d[0]=0,e(0)};var d={},b={27:0};e.e=function(c,a){if(0===b[c])return a.call(null,e);if(void 0!==b[c])b[c].push(a);else{b[c]=[a];var d=document.getElementsByTagName("head")[0],f=document.createElement("script");f.type="text/javascript",f.charset="utf-8",f.async=!0,f.src=e.p+""+c+"."+{0:"0697565ca581aa2c343b",1:"fa03ac7ff9b81ce872b3",2:"18f95e0967e9b199ee94",3:"e4360316bafc8c64147b",4:"616e2fe9ef59157ba2db",5:"7deba7a250e20460c290",6:"59f489aa6e54d075718a",7:"95f05578064cbcc9e9e6",8:"9ab6e350130cc73e028c",9:"73cb28393f0bed1f6fc9",10:"36824da4cedac012b3f7",11:"72002094b94d3d8a08a4",12:"47883231870eeeb07168",13:"e90dc479931bcbd93942",14:"2263d38993415227a37f",15:"00ccfb1259d0f29df66a",16:"14de52a925d620b78244",17:"6f423e2ce65aac859d38",18:"99980de419d71ef35721",19:"a88576fc56a89ef19d3b",20:"a7e98de5c79abdbd34b5",21:"5b75bdc9a47c0055c61d",22:"e344545b4d753508e312",23:"e8550b759d4193df51c2",24:"6a26259bc8c017d3cdb0",25:"78ddaf3a8966fe22852f",26:"8d977896034dfdeb8de6",28:"99bae94c202cc6173509",29:"da1d610b13c6a0ab301a",30:"79d20ab9c5bfa0782329",31:"0dae9ac29b5ca8df85d8",32:"0c8f90a75391a417536e",33:"87012d9db89ea1944391",34:"95a8f85555453fa1e62c",35:"537563c2658103cc0da4",36:"7d123bbfdee10c6fe804",37:"d419fba0eacf0a011e87",38:"e51adcc8301bdff6cd81",39:"c3e70d51a25dd3f402e5",40:"d6aafea30e46fb8fd239",41:"f726cb17d74511b97da6",42:"4a6c32f485a99c55bda4",43:"cb118a2c1b3b6ad136c0",44:"656e65470d76001ef1d1",45:"508bbc0390ebb8a7e733",46:"b81b252b332737c7fdba",47:"62942409d8b1a94ce139",48:"a26a861c872c5851e98f",49:"50bb023c0681b0470142",50:"ed8c9a1205c26ea85d48",51:"24a4c323c5dd56802075",52:"84d754a6c81d455ca1a3",53:"cb32eff454d6d4794ed6",54:"451185d9c02980a9203e",55:"4b385d0deccc77668e31",56:"81437a1647c3c4d15c95",57:"64a715c8fe0f9ce083ab",58:"cb8bf3512c7074dca7a1",59:"5c4226b77e019fcc4b5a",60:"1a02d9abe30fed40cb7a",61:"cecb8b3351e6c1cbba63",62:"7b3c9723e8126ffcace6",63:"4a9d8469933ddd7f425d",64:"9504a96895c13ec806d8",65:"78651cb6362dec573cdc",66:"30a23f40232e146b84c8",67:"2c1484319138bf121ed0",68:"a9fda28dd8e0429d40b4",69:"442f2b1962d197f96ce6",70:"53e1c2cb45bd1b2b437b",71:"ebdfa5b9759d22a445d7",72:"b30e7612d067910030dc",73:"e27ab4149d1b018abd99",74:"615c4b8c39b6aeab7f0c",75:"1c55e4e1225c4a02eb57",76:"3ff433ce0674839cbe6e",77:"0d469de1d796b569423a",78:"178e474daa2c97fe9e6b",79:"0c8de053f14bf473b04a",80:"0d704dca1e17b7ca3c92",81:"b34f72ba1eff46021703",82:"71bc5aaf7445b3f8d6b0",83:"d5b83e9908642c1a578e",84:"3c4aa872792bfa8884e8",85:"db4eb311ee8579d7c4a9",86:"e69713eaf2df050b6c7c",87:"a5f849fb0b903e5e259e",88:"296c5a53db3d93f27c37"}[c]+".chunk.js",d.appendChild(f)}},e.m=c,e.c=d,e.p="/templates/javascript/dist/bundles/"}(function(c){for(var e in c)if(Object.prototype.hasOwnProperty.call(c,e))switch(typeof c[e]){case"function":break;case"object":c[e]=function(e){var a=e.slice(1),d=c[e[0]];return function(c,e,b){d.apply(this,[c,e,b].concat(a))}}(c[e]);break;default:c[e]=c[c[e]]}return c}([]));
+</script>
+<link rel="stylesheet" data-persist="true" media="screen, print" href="https://s.npr.org/templates/javascript/dist/bundles/persistent-css-c1bc1d67b21befc9923c.css" /><link rel="stylesheet" media="screen, print" href="https://s.npr.org/templates/javascript/dist/bundles/newsStory-css-c1bc1d67b21befc9923c.css" /><script type="text/javascript">
+   document.domain="npr.org";
+</script>
+</head><body id="news" class="news tmplNewsStory  story-layout is-buildout no-transcript has-no-branding id677558000 " data-pjax-modules="util/env images/lazy-load chartbeat comscore metrics nielsen nielsenDCR rocketfuel copyright auto-refresh navigation/global-navigation fitvids dfp globalfooter persistent-audio player/more-options what-input metrics/doubleclickFloodlight metrics/facebookTracking ecommerce recommendations/end-of-story-recommendations-callout jw social/share slideshow images/enlargement swfbuilder contentfooter story/replace-centerstage story/sticky-header story/date-tooltip callout/end-of-story-callout social/sharepop podcast-cards"><div class="skip-links">
+      <span>Accessibility links</span>   <ul>
+            <li><a href="#mainContent" class="skiplink">Skip to main content</a></li>
+      <li><a href="https://help.npr.org/customer/en/portal/articles/2535181-what-are-the-keyboard-shortcuts-for-using-the-npr-org-audio-player-" class="skiplink">Keyboard shortcuts for audio player</a></li>
+   </ul>
+</div>
+<header class="npr-header" id="globalheader" aria-label="NPR header"><nav class="navigation" aria-label="main navigation">
+    <div class="navigation__top-level-wrap" data-metrics-all data-metrics-category="global navigation">
+        <ul class="navigation__top-level">
+            <li class="navigation__home">
+                <a href="/" data-metrics-action="click npr logo">
+                    <img src="https://media.npr.org/chrome_svg/npr-logo.svg" alt="NPR logo"/>
+                </a>
+            </li>
+    
+            <li id="navigation__station-mount"></li>
+    
+            <li id="user-account-dropdown-mount" class="navigation__account"></li>
+    
+            <li class="navigation__shop">
+                <a href="https://shop.npr.org" data-metrics-action="click npr shop">Shop</a>
+            </li>
+    
+            <li id="navigation__station-donate-mount"></li>
+    
+            <li class="navigation__toggle-wrap">
+                <button id="navigation__toggle--open" class="navigation__toggle navigation__toggle--open" aria-haspopup="true" aria-expanded="false" data-metrics-action="open navigation menu">
+                   Open Navigation Menu
+                </button>
+            </li>
+        </ul>
+    </div>
+    <section id="main-menu" class="menu menu--main" data-metrics-all data-metrics-category="global navigation">
+        <div class="menu__inner">
+            <header class="menu__header">
+                <button id="navigation__toggle--close" class="navigation__toggle navigation__toggle--close" aria-haspopup="true" aria-expanded="true" data-metrics-action="close navigation menu">
+                    Close <span>Navigation Menu</span>
+                </button>
+            </header>
+            <ul class="menu__list">
+                <li class="menu__item menu__item--home">
+                    <div class="menu__item-inner"><a href="/" data-metrics-action="click npr logo">Home</a></div>
+                </li>
+                <li class="menu__item menu__item--news menu__item--has-submenu" data-metrics-hover="toggle news drawer">
+                    <div class="menu__item-inner">
+                        <a href="/sections/news/" data-metrics-action="click news">News</a>
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle news drawer">Expand/collapse submenu for News</button>
+                    </div>
+
+                    <ul class="submenu submenu--news">
+                        <li class="submenu__item"><a href="/sections/national/" data-metrics-action="click national">National</a></li>
+                        <li class="submenu__item"><a href="/sections/world/" data-metrics-action="click world">World</a></li>
+                        <li class="submenu__item"><a href="/sections/politics/" data-metrics-action="click politics">Politics</a></li>
+                        <li class="submenu__item"><a href="/sections/business/" data-metrics-action="click business">Business</a></li>
+                        <li class="submenu__item"><a href="/sections/health/" data-metrics-action="click health">Health</a></li>
+                        <li class="submenu__item"><a href="/sections/science/" data-metrics-action="click science">Science</a></li>
+                        <li class="submenu__item"><a href="/sections/technology/" data-metrics-action="click technology">Technology</a></li>
+                        <li class="submenu__item"><a href="/sections/codeswitch/" data-metrics-action="click race & culture">Race &amp; Culture</a></li>
+                    </ul>
+                </li>
+                <li class="menu__item menu__item--arts-life menu__item--has-submenu" data-metrics-hover="toggle arts drawer">
+                    <div class="menu__item-inner">
+                        <a href="/sections/arts/" data-metrics-action="click arts & life">Arts &amp; Life</a>
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle arts drawer">Expand/collapse submenu for Arts &amp; Life</button>
+                    </div>
+
+                    <ul class="submenu submenu--arts-life">
+                        <li class="submenu__item"><a href="/books/" data-metrics-action="click books">Books</a></li>
+                        <li class="submenu__item"><a href="/sections/movies/" data-metrics-action="click movies">Movies</a></li>
+                        <li class="submenu__item"><a href="/sections/television/" data-metrics-action="click television">Television</a></li>
+                        <li class="submenu__item"><a href="/sections/pop-culture/" data-metrics-action="click pop culture">Pop Culture</a></li>
+                        <li class="submenu__item"><a href="/sections/food/" data-metrics-action="click food">Food</a></li>
+                        <li class="submenu__item"><a href="/sections/art-design/" data-metrics-action="click art & design">Art &amp; Design</a> </li>
+                        <li class="submenu__item"><a href="/sections/performing-arts/" data-metrics-action="click performing arts">Performing Arts</a></li>
+                    </ul>
+                </li>
+                <li class="menu__item menu__item--music menu__item--has-submenu" data-metrics-hover="toggle music drawer">
+                    <div class="menu__item-inner">
+                        <a href="/music/" data-metrics-action="click music">Music</a>
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle music drawer">Expand/collapse submenu for Music</button>
+                    </div><ul class="submenu submenu--music"><li class="submenu__item">
+    <a href="https://www.npr.org/series/tiny-desk-concerts/" data-metrics-action="click tiny desk">
+        Tiny Desk
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/sections/allsongs/" data-metrics-action="click all songs considered">
+        All Songs Considered
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/sections/music-news/" data-metrics-action="click music news">
+        Music News
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/sections/music-features" data-metrics-action="click music features">
+        Music Features
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/sections/new-music/" data-metrics-action="click new music">
+        New Music
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/series/534681404/best-music-of-2018" data-metrics-action="click best music of 2018">
+        Best Music Of 2018
+    </a>
+</li></ul>                </li>
+                <li class="menu__item menu__item--shows-podcasts menu__item--has-submenu" data-metrics-hover="toggle programs &amp; podcasts drawer">
+                    <div class="menu__item-inner">
+                        <a href="/programs/" data-metrics-action="click shows & podcasts">Shows &amp; Podcasts</a>
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle programs &amp; podcasts drawer">Expand/collapse submenu for Shows &amp; Podcasts</button>
+                    </div>
+
+                    <div class="submenu submenu--shows-podcasts">
+                        <span class="submenu__category submenu__category--daily">Daily</span>
+                        <ul class="submenu__list submenu__list--daily">
+                            <li class="submenu__item">
+                                <a href="/programs/morning-edition/" data-metrics-action="click morning edition">
+                                    <img src="https://media.npr.org/chrome/programs/logos/morning-edition.jpg" alt="" />
+                                    Morning Edition
+                                </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="/programs/all-things-considered/" data-metrics-action="click all things considered">
+                                    <img src="https://media.npr.org/chrome/programs/logos/all-things-considered.png" alt="" />
+                                    All Things Considered
+                                </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="/programs/fresh-air/" data-metrics-action="click fresh air">
+                                    <img src="https://media.npr.org/chrome/programs/logos/fresh-air.png" alt="" />
+                                    Fresh Air
+                                </a>
+                            </li>
+                            <li class="submenu__item">
+                                <a href="/podcasts/510318/up-first" data-metrics-action="click up first">
+                                    <img src="https://media.npr.org/chrome/programs/logos/up-first.jpg" alt="" />
+                                    Up First
+                                </a>
+                            </li>
+                        </ul>
+                        <span class="submenu__category submenu__category--featured">Featured</span><ul class="submenu__list submenu__list--featured"><li class="submenu__item">
+    <a href="https://www.npr.org/podcasts/510313/how-i-built-this" data-metrics-action="click how i built this with guy raz">
+        <img src="https://media.npr.org/assets/img/2018/08/03/npr_hibt_podcasttile_sq-98320b282169a8cea04a406530e6e7b957665b3f.jpg?s=100" alt="" />
+        How I Built This with Guy Raz
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/podcasts/344098539/wait-wait-don-t-tell-me" data-metrics-action="click wait wait...don't tell me!">
+        <img src="https://media.npr.org/assets/img/2018/08/06/npr_wwdtm_podcasttile_sq-1e9edf5dfb49a3fff3703764e39442173ba8558a.jpg?s=100" alt="" />
+        Wait Wait...Don't Tell Me!
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/podcasts/510289/planet-money" data-metrics-action="click planet money">
+        <img src="https://media.npr.org/assets/img/2018/08/02/npr_planetmoney_podcasttile_sq-7b7fab0b52fd72826936c3dbe51cff94889797a0.jpg?s=100" alt="" />
+        Planet Money
+    </a>
+</li><li class="submenu__item">
+    <a href="https://www.npr.org/podcasts/510308/hidden-brain" data-metrics-action="click hidden brain">
+        <img src="https://media.npr.org/assets/img/2018/08/03/npr_hiddenbrain_podcasttile_sq-270ab642de6948802f485c6ad1f087239ef6e324.jpg?s=100" alt="" />
+        Hidden Brain
+    </a>
+</li></ul>                        <ul class="submenu__list submenu__list--directories">
+                            <li class="submenu__item"><a href="/programs/" data-metrics-action="click all programs">More Shows &amp; Podcasts</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="menu__item menu__item--search">
+                    <div class="menu__item-inner">
+                        <a href="/search" data-metrics-action="click search">Search</a>
+                    </div>
+                </li>
+                <li id="user-account-dropdown-mount-two" class="menu__item menu__item--account"></li>
+                <li class="menu__item menu__item--shop">
+                    <div class="menu__item-inner">
+                        <a href="https://shop.npr.org" data-metrics-action="click npr shop">Shop</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="menu menu--music" data-metrics-all data-metrics-category="music ecosystem navigation">
+        <div class="menu__list-wrap">
+            <ul class="menu__list menu__list--ecosystem menu__list--music">
+                <li class="menu__item menu__item--music-home">
+                    <a href="/music/" data-metrics-action="click npr music logo">
+                        <img src="https://media.npr.org/chrome_svg/music-logo-dark.svg" class="music-logo"  alt="NPR Music" />
+                        <img src="https://media.npr.org/chrome_svg/music-logo-light.svg" class="music-logo-alt" alt="NPR Music" />
+                    </a>
+                </li>
+                <li class="menu__item"><a href="/series/tiny-desk-concerts/" data-metrics-action="click tiny desk">Tiny Desk</a></li>
+                <li class="menu__item"><a href="/sections/allsongs/" data-metrics-action="click all songs">All Songs Considered</a></li>
+                <li class="menu__item"><a href="/sections/music-news/" data-metrics-action="click music news">Music News</a></li>
+                <li class="menu__item"><a href="/sections/music-features/" data-metrics-action="click features">Features</a></li>
+                <li class="menu__item"><a href="/sections/new-music/" data-metrics-action="click new music">New Music</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="menu menu--about" data-metrics-all data-metrics-category="about ecosystem navigation">
+        <div class="menu__list-wrap">
+            <ul class="menu__list menu__list--ecosystem menu__list--about">
+                <li class="menu__item menu__item--about-home"><a href="/about/aboutnpr/" data-metrics-action="click about npr">About NPR</a></li>
+                <li class="menu__item menu__item--has-submenu" data-metrics-hover="toggle overview drawer">
+                    <div class="menu__item-inner">
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle overview drawer">Expand/collapse submenu for Overview</button>
+                        <span class="menu__item-label">Overview</span>
+                    </div>
+               
+                    <ul class="submenu submenu--ecosystem submenu--overview">
+                        <li class="submenu__item"><a href="/about-npr/192827079/overview-and-history" data-metrics-action="click overview and history">Overview and History</a></li>
+                        <li class="submenu__item"><a href="/about-npr/178659563/our-mission-and-vision" data-metrics-action="click mission and vision">Mission and Vision</a></li>
+                        <li class="submenu__item"><a href="/about-npr/178640915/npr-stations-and-public-media" data-metrics-action="click stations and public media">Stations and Public Media</a></li>
+                        <li class="submenu__item"><a href="/about-npr/178660742/public-radio-finances" data-metrics-action="click npr finances">NPR Finances</a></li>
+                        <li class="submenu__item"><a href="/about-npr/179803822/people-at-npr" data-metrics-action="click people">People</a></li>
+                        <li class="submenu__item"><a href="http://ethics.npr.org/" data-metrics-action="click ethics">Ethics</a></li>
+                        <li class="submenu__item"><a href="about-npr/183726490/awards" data-metrics-action="click awards">Awards</a></li>
+                    </ul>
+                </li>
+                <li class="menu__item menu__item--has-submenu" data-metrics-hover="toggle connect drawer">
+                     <div class="menu__item-inner">
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle connect drawer">Expand/collapse submenu for Connect</button>
+                        <span class="menu__item-label">Connect</span>
+                     </div>
+                    
+                     <ul class="submenu submenu--ecosystem submenu--connect">
+                        <li class="submenu__item"><a href="/about-npr/177066727/visit-npr" data-metrics-action="click visit npr">Visit NPR</a></li>
+                        <li class="submenu__item"><a href="http://www.nprpresents.org/" data-metrics-action="click npr presents">NPR Presents</a></li>
+                        <li class="submenu__item"><a href="http://studio1.npr.org" data-metrics-action="click studio 1 events">Studio 1 Events</a></li>
+                        <li class="submenu__item"><a href="http://generationlisten.npr.org/" data-metrics-action="click generation listen">Generation Listen</a></li>
+                        <li class="submenu__item"><a href="/about-npr/182673872/book-an-npr-speaker" data-metrics-action="click book a speaker">Book a Speaker</a></li>
+                        <li class="submenu__item"><a href="/about-npr/179881519/rights-and-permissions-information" data-metrics-action="click request permissions">Request Permissions</a></li>
+                        <li class="submenu__item"><a href="/about-npr/187046089/ways-to-listen-to-npr" data-metrics-action="click ways to listen">Ways to Listen</a></li>
+                        <li class="submenu__item"><a href="/sections/npr-extra/" data-metrics-action="click npr extra blog">NPR Extra Blog</a></li>
+                        <li class="submenu__item"><a href="/newsletters/" data-metrics-action="click sign up: newsletters">Email Newsletters</a></li>
+                        <li class="submenu__item"><a href="https://shop.npr.org/" data-metrics-action="click shop npr">Shop NPR</a></li>
+                        <li class="submenu__item"><a href="https://help.npr.org" data-metrics-action="click get help">Get Help</a></li>
+                        <li class="submenu__item"><a href="/contact/" data-metrics-action="click contact us">Contact Us</a></li>
+                     </ul>
+                </li>
+                <li class="menu__item menu__item--has-submenu" data-metrics-hover="toggle support drawer">
+                     <div class="menu__item-inner">
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle support drawer">Expand/collapse submenu for Support</button>
+                        <span class="menu__item-label">Support</span>
+                     </div>
+                     
+                     <ul class="submenu submenu--ecosystem submenu--support">
+                        <li class="submenu__item"><a href="/series/750002/support-public-radio" data-metrics-action="click support public radio">Support Public Radio</a></li>
+                        <li class="submenu__item"><a href="/about-npr/186948703/corporate-sponsorship" data-metrics-action="click corporate sponsorship">Corporate Sponsorship</a>
+                        <li class="submenu__item"><a href="/about-npr/181961258/volunteer-at-npr" data-metrics-action="click volunteer">Volunteer</a></li>
+                    </ul>
+                </li>
+                <li class="menu__item menu__item--has-submenu" data-metrics-hover="toggle press drawer">
+                     <div class="menu__item-inner">
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle press drawer">Expand/collapse submenu for Press</button>
+                        <span class="menu__item-label">Press</span>
+                     </div>
+                     
+                     <ul class="submenu submenu--ecosystem submenu--press">
+                        <li class="submenu__item"><a href="/series/750003/press-room/" data-metrics-action="click releases and statements">Releases and Statements</a></li>
+                        <li class="submenu__item"><a href="/about-npr/182675632/photos-and-logos" data-metrics-action="click photos and logos">Photos and Logos</a></li>
+                        <li class="submenu__item"><a href="/about/press/NPR_Fact_Sheet.pdf" data-metrics-action="click fact sheet pdf">Fact Sheet (PDF)</a></li>
+                        <li class="submenu__item"><a href="/about-npr/185546105/media-relations-contacts" data-metrics-action="click media relations contacts">Media Relations Contacts</a></li>
+                    </ul>
+                </li>
+                <li class="menu__item menu__item--has-submenu" data-metrics-hover="toggle careers drawer">
+                    <div class="menu__item-inner">
+                        <button class="menu__toggle-submenu" data-metrics-action="toggle careers drawer">Expand/collapse submenu for Careers</button>
+                        <span class="menu__item-label">Careers</span>
+                     </div>
+                    
+                     <ul class="submenu submenu--ecosystem submenu--careers">
+                        <li class="submenu__item"><a href="/series/750004/careers" data-metrics-action="click careers at npr">Careers at NPR</a></li>
+                        <li class="submenu__item"><a href="https://recruiting.ultipro.com/NAT1011NATPR/JobBoard/af823b19-a43b-4cda-b6c2-c06508d84cf6" data-metrics-action="click search jobs">Search Jobs</a></li>
+                        <li class="submenu__item"><a href="/about-npr/179008081/tapping-into-the-npr-culture/" data-metrics-action="click culture">Culture</a></li>
+                        <li class="submenu__item"><a href="/about-npr/181909622/applying-at-npr/" data-metrics-action="click applying">Applying</a></li>
+                        <li class="submenu__item"><a href="/about-npr/181881227/internships-at-npr/" data-metrics-action="click interns">Interns</a></li>
+                        <li class="submenu__item"><a href="/about-npr/181880514/fellowships-at-npr/" data-metrics-action="click fellows">Fellows</a></li>
+                        <li class="submenu__item"><a href="/about-npr/185550054/digital-careers-at-npr/" data-metrics-action="click digital">Digital</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+</nav></header><main aria-label="main content"><div class="speakable">
+      <b data-is-speakable>Michael Flynn's Sentencing Delayed By Judge Sullivan In Case Of Lying To FBI</b>   <b data-is-speakable>The judge ordered both sides to file status reports by March 13. He said he has outstanding questions, including how the Russia investigation was impeded and the impact of Flynn's lies on the inquiry.</b>
+</div>
+<div id="wrapper">
+      <header class="contentheader contentheader--one" data-metrics='{"category":"National Security"}' ></header>   <div class="story-sticky-header">
+    <div class="story-sticky-header-inner">
+        <a href="/" class="nprhome nprhome-news"  data-metrics='{&quot;category&quot;:&quot;global navigation&quot;,&quot;action&quot;:&quot;click npr logo&quot;,&quot;label&quot;:&quot;\/&quot;}' >
+            <img src="https://media.npr.org/chrome_svg/npr-logo.svg" alt="NPR logo"/>
+        </a>
+
+        
+
+        <a href="#" class="title">
+          <b>Federal Judge Delays Michael Flynn Sentencing In Case Of Lying To Feds</b>
+          
+        </a>
+    </div>
+</div>   <section id="main-section"><article class="story"><a id="mainContent"></a><div class="slug-wrap">
+
+    <h3 class="slug">
+        <a href="https://www.npr.org/sections/national-security/">National Security</a>
+    </h3>
+</div>
+<div class="storytitle">
+      <h1>Federal Judge Delays Michael Flynn Sentencing In Case Of Lying To Feds</h1>
+   <input type="hidden" id="title677558000" value="Federal Judge Delays Michael Flynn Sentencing In Case Of Lying To Feds" />
+   <input type="hidden" id="shortTitle677558000" value="Federal Judge Delays Michael Flynn Sentencing In Case Of Lying To Feds" />
+   <input type="hidden" id="modelShortUrl677558000" value="https://n.pr/2PMgr0Z" />
+   <input type="hidden" id="modelFullUrl677558000" value="https://www.npr.org/2018/12/18/677558000/federal-judge-delays-michael-flynn-sentencing-in-case-of-lying-to-feds" />
+</div>
+
+<!-- END CLASS="STORYTITLE" -->
+<div class="story-tools">
+      <div id="primaryaudio" class="storylocation linkLocation">
+            <article id="res677895089" class="bucketwrap resaudio primaryaudio unavailable" aria-label="audio-module"><div class="audio-module">
+      <h4 class="audio-module-title">Federal Judge Delays Michael Flynn Sentencing In Case Of Lying To Feds</h4>
+   <div class="audio-module-controls-wrap">
+
+
+        <div class="audio-module-controls">
+            <b class="audio-module-listen icn-play is-inactive"></b>
+            <b class="audio-availability-message">Audio will be available later today.</b>
+        </div>
+</div>
+
+   
+</div>
+</article>
+   </div>
+   <div class="share-tools share-tools--primary" aria-label="Share tools">
+            <ul>
+                  <li class="share-tools__service share-tools__service--facebook"><button class="fbStory677558000" data-share-facebook='{"storyId": 677558000 }'  data-metrics='{"action":"Click Facebook","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/12\/18\/677558000\/federal-judge-delays-michael-flynn-sentencing-in-case-of-lying-to-feds"}' ><b class="share-tools__service-name">Facebook</b></button></li>
+         <li class="share-tools__service share-tools__service--twitter"><button class="story677558000" data-share-twitter='{"storyId": 677558000 }'  data-metrics='{"action":"Click Twitter","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/12\/18\/677558000\/federal-judge-delays-michael-flynn-sentencing-in-case-of-lying-to-feds"}' ><b class="share-tools__service-name">Twitter</b></button></li>
+         <li class="share-tools__service share-tools__service--flipboard"><button class="story677558000" data-share-flipboard='{"storyId": 677558000 }'  data-metrics='{"action":"Click Flipboard","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/12\/18\/677558000\/federal-judge-delays-michael-flynn-sentencing-in-case-of-lying-to-feds"}' ><b class="share-tools__service-name">Flipboard</b></button></li>
+         <li class="share-tools__service share-tools__service--email"><button class='share-tools__email-link' data-story-id='677558000'  data-metrics='{"action":"Click Email a Friend","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/12\/18\/677558000\/federal-judge-delays-michael-flynn-sentencing-in-case-of-lying-to-feds"}' ><b class="share-tools__service-name">Email</b></button></li>
+      </ul>
+   </div>
+   
+<!-- END CLASS="SHARE-TOOLS SHARE-TOOLS--PRIMARY" ARIA-LABEL="SHARE TOOLS" -->
+</div>
+
+<!-- END CLASS="STORY-TOOLS" -->
+<div id="story-meta" class="story-meta has-byline">
+      <div class="story-meta__one">
+            <div class="dateblock">
+    <time datetime="2018-12-18T13:06:28-05:00">
+            <span class="date">December 18, 2018</span><span class="time">1:06 PM ET</span>
+    </time>
+</div>      <div class="program-block">
+                  Heard on          <a href="https://www.npr.org/programs/all-things-considered/2018/12/18/677716954">All Things Considered</a>
+      </div>
+      
+<!-- END CLASS="PROGRAM-BLOCK" -->
+   </div>
+   
+<!-- END CLASS="STORY-META__ONE" -->
+   <div class="story-meta__two">
+            <div id="storybyline" class="storybyline-wrap linkLocation">
+                  <div class="bucketwrap byline" id="res677558002" previewTitle="bylines">
+                        <div class="byline-container--block">
+                              <div class="byline byline--block byline--has-link" aria-label="Byline">
+    <div class="byline__photo">
+      <a href="https://www.npr.org/people/127410674/carrie-johnson" rel="author"  data-metrics='{"action":"Click Byline","category":"Story Metadata"}' >
+        <img src="https://media.npr.org/assets/img/2016/08/29/carrie-johnson_sq-85e59384e930e4413f94e24ed0848dd95c3c1700-s100-c85.jpeg" class="img"  alt="Carrie Johnson 2016 square" />
+      </a>
+    </div>
+
+  <p class="byline__name byline__name--block">
+    <a href="https://www.npr.org/people/127410674/carrie-johnson" rel="author"  data-metrics='{"action":"Click Byline","category":"Story Metadata"}' >
+      Carrie Johnson
+    </a>
+  </p>
+
+    <a class="byline__social-handle byline__social-handle--5" href="https://www.twitter.com/johnson_carrie"  data-metrics='{"action":"Click Social Handle","category":"Story Metadata"}' >
+      Twitter
+    </a>
+</div>               <div class="byline byline--block byline--has-link" aria-label="Byline">
+
+  <p class="byline__name byline__name--block">
+    <a href="https://www.npr.org/people/542834285/philip-ewing" rel="author"  data-metrics='{"action":"Click Byline","category":"Story Metadata"}' >
+      Philip Ewing
+    </a>
+  </p>
+
+</div>
+            </div>
+         </div>
+         
+<!-- END CLASS="BUCKETWRAP BYLINE" ID="RES677558002" PREVIEWTITLE="BYLINES" -->
+      </div>
+   </div>
+   
+<!-- END CLASS="STORY-META__TWO" -->
+</div>
+
+<!-- END ID="STORY-META" CLASS="STORY-META HAS-BYLINE" -->
+<div id="storytext" class="storytext storylocation linkLocation">
+      <div id="res677831639" class="bucketwrap image large">
+            <div class="imagewrap" data-crop-type="">
+    <img src="https://media.npr.org/assets/img/2018/12/18/ap_18352542997092flynndec18_wide-12df3ce5ba6df43f792eed57f32bf2bca429460f-s1100-c15.jpg" data-original="https://media.npr.org/assets/img/2018/12/18/ap_18352542997092flynndec18_wide-12df3ce5ba6df43f792eed57f32bf2bca429460f-s1100.jpg" class="img lazyOnLoad"  alt="" />
+        <div class="enlarge-options">
+            <a class="enlargelink" href="https://media.npr.org/assets/img/2018/12/18/ap_18352542997092flynndec18_wide-12df3ce5ba6df43f792eed57f32bf2bca429460f-s1200.jpg">Enlarge this image</a>
+        </div>
+</div>
+<div class="credit-caption">
+    <div class="caption-wrap">
+        <div class="caption" aria-label="Image caption">
+            <p>
+                President Trump's former national security adviser Michael Flynn arrives at federal court in Washington. D.C., Tuesday.
+                
+                <b class="credit" aria-label="Image credit">
+                    
+                    Carolyn Kaster/AP
+                    
+                </b>
+                <b class="hide-caption"><b>hide caption</b></b>
+            </p>
+        </div>
+
+
+            <b class="toggle-caption"><b>toggle caption</b></b>
+    </div>
+
+    <span class="credit" aria-label="Image credit">
+        
+        Carolyn Kaster/AP
+        
+    </span>
+</div>
+<div class="enlarge_measure">
+    <div class="img_wrap">
+        <img data-original="https://media.npr.org/assets/img/2018/12/18/ap_18352542997092flynndec18_wide-12df3ce5ba6df43f792eed57f32bf2bca429460f-s1200.jpg" alt="" />
+    </div>
+</div>
+<div class="enlarge_html">
+    <div class="image_data">
+        <p class="caption">President Trump's former national security adviser Michael Flynn arrives at federal court in Washington. D.C., Tuesday.</p>
+        <span class="credit" aria-label="Image credit">
+            
+            Carolyn Kaster/AP
+            
+        </span>
+    </div>
+</div>
+   </div>
+   <p><strong>Updated at 3:21 p.m. ET</strong></p>   <p>A federal judge delayed sentencing former national security adviser Michael Flynn on Tuesday after he <a href="https://www.npr.org/2017/12/01/561238303/michael-flynn-sr-expected-to-plead-guilty-to-lying-to-fbi">pleaded guilty</a> to lying to investigators about his talks with Russia's ambassador.</p>   <p>U.S. District Judge Emmet Sullivan said he has significant outstanding questions about the case, including how the government's Russia investigation was impeded and the material impact of Flynn's lies on the special counsel's inquiry.</p>   <p>Flynn had spent more than a year giving what prosecutors called all the cooperation they wanted, including in 62 hours of meetings and the production of "sweeping categories" of documents and electronic devices.</p>   <div id="res677575347" class="bucketwrap internallink insettwocolumn inset2col ">
+            <div class="bucket img">
+                  <a id="featuredStackSquareImage675938084" href="https://www.npr.org/2018/12/11/675938084/michael-flynn-asks-for-no-prison-time-cites-help-he-gave-special-counsel"  data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/12\/11\/675938084\/michael-flynn-asks-for-no-prison-time-cites-help-he-gave-special-counsel"}' ><img src="https://media.npr.org/assets/img/2018/12/11/ap_181915458744881_sq-0bd11a41b7dc9c39a6c4fb9e222ad0b37fdeb6a8-s100-c15.jpg" data-original="https://media.npr.org/assets/img/2018/12/11/ap_181915458744881_sq-0bd11a41b7dc9c39a6c4fb9e222ad0b37fdeb6a8-s100.jpg" class="img lazyOnLoad"  alt="Michael Flynn Asks For No Prison Time, Cites Help He Gave Special Counsel" /></a>         <div class="bucketblock">
+                        <h3 class="slug"><a href="https://www.npr.org/sections/politics/">Politics </a></h3>
+            <h3><a href="https://www.npr.org/2018/12/11/675938084/michael-flynn-asks-for-no-prison-time-cites-help-he-gave-special-counsel"  data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/12\/11\/675938084\/michael-flynn-asks-for-no-prison-time-cites-help-he-gave-special-counsel"}' >Michael Flynn Asks For No Prison Time, Cites Help He Gave Special Counsel</a></h3>
+         </div>
+         
+<!-- END CLASS="BUCKETBLOCK" -->
+      </div>
+      
+<!-- END CLASS="BUCKET IMG" -->
+   </div>
+   
+<!-- END ID="RES677575347" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+   <p>In light of that accommodation, the Justice Department had told the judge ahead of Tuesday's hearing that it would be all right if Flynn received no prison time. </p>   <p>Flynn, in his filing, <a href="https://www.npr.org/2018/12/11/675938084/michael-flynn-asks-for-no-prison-time-cites-help-he-gave-special-counsel">also asked for leniency</a>.</p>   <p>But the judge was less certain about the extent of Flynn's assistance — and the seriousness of the offense. </p>   <p>In a remarkable series of exchanges, Sullivan asked whether Flynn and his legal team wanted to push off the punishment, declaring that he was not bound by advisory guidelines that called for a maximum of six months in prison.</p>   <p>Ultimately, the judge directed both sides to file a status report by March 13.</p>   <aside id="ad-backstage-wrap" aria-label="advertisement">
+    
+
+    <div id="ad-backstage-News_National_National_Security" class="ad-backstage" data-ad-config='{"network":"\/6735\/n6735","site":{"default":"NPR","mobile":"NPRMOBILE"},"zone":"News_National_National_Security","targets":{"testserver":"false","storyId":"677558000","program":"All_Things_Considered","agg":["312150170","191676894","434975886"]},"location":"backstage","deferred":false,"isBetweenContent":true,"isAggSponsorship":false,"borderClass":""}'></div>
+
+</aside>   <div id="res677601379" class="bucketwrap internallink insettwocolumn inset2col ">
+            <div class="bucket img">
+                  <a id="featuredStackSquareImage677425728" href="https://www.npr.org/2018/12/17/677425728/2-associates-of-michael-flynn-charged-in-alleged-scheme-to-smear-turkish-cleric"  data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/12\/17\/677425728\/2-associates-of-michael-flynn-charged-in-alleged-scheme-to-smear-turkish-cleric"}' ><img src="https://media.npr.org/assets/img/2018/12/17/ap_17316428097732_sq-a5967143b578d39204cc042f614da8622d527a96-s100-c15.jpg" data-original="https://media.npr.org/assets/img/2018/12/17/ap_17316428097732_sq-a5967143b578d39204cc042f614da8622d527a96-s100.jpg" class="img lazyOnLoad"  alt="2 Associates Of Michael Flynn Charged In Alleged Scheme To Smear Turkish Cleric" /></a>         <div class="bucketblock">
+                        <h3 class="slug"><a href="https://www.npr.org/sections/national-security/">National Security </a></h3>
+            <h3><a href="https://www.npr.org/2018/12/17/677425728/2-associates-of-michael-flynn-charged-in-alleged-scheme-to-smear-turkish-cleric"  data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/12\/17\/677425728\/2-associates-of-michael-flynn-charged-in-alleged-scheme-to-smear-turkish-cleric"}' >2 Associates Of Michael Flynn Charged In Alleged Scheme To Smear Turkish Cleric</a></h3>
+         </div>
+         
+<!-- END CLASS="BUCKETBLOCK" -->
+      </div>
+      
+<!-- END CLASS="BUCKET IMG" -->
+   </div>
+   
+<!-- END ID="RES677601379" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+   <p>Flynn's attorney Robert Kelner said that Flynn may testify in the case prosecutors are making in the Eastern District of Virginia against two of his former business associates. The associates were charged in documents <a href="https://www.npr.org/2018/12/17/677425728/2-associates-of-michael-flynn-charged-in-alleged-scheme-to-smear-turkish-cleric">unsealed on Monday</a> with a scheme to act as unregistered agents for Turkey.</p>   <p>Flynn has been a model cooperator with the Justice Department, Kelner said, and if he serves as a government witness in the Turkey lobbying case, that may be "the only area where there's something left to give." </p>   <p>"Gen. Flynn has held nothing back, nothing, in his cooperation with the special counsel's office," Kelner said.</p>   <p><strong>Another surprise twist</strong></p>   <p>Sullivan entered the courtroom with what he said were a number of concerns that called into question the guilty plea "or, at the very least, [Flynn's] acceptance of responsibility."</p>   <p>The judge repeatedly asked Flynn and his lawyers whether they wanted to take a recess to confer about legal issues or the prospect of a delay until his full cooperation with authorities could be assessed.</p>   <p>Sullivan also stressed Flynn's service in the military and at the White House, where his false statements were made.</p>   <p>This was "a high-ranking senior official of the administration making false statements to federal agents while on the premises of the White House," the judge said.</p>   <p>"I'm not hiding my disgust, my disdain, for this criminal offense," he added.</p>   <p>At another point, the judge asked prosecutor Brandon Van Grack whether Flynn's conduct might have amounted to "treason" and also suggested that Flynn may have been acting as a foreign agent during his 24 days in the Trump White House.</p>   <p>Van Grack responded that Flynn's undeclared lobbying work for Turkey ended before his stint in the White House and that "the government has no reason to believe that the defendant has committed treason."</p>   <div id="res677592531" class="bucketwrap internallink insettwocolumn inset2col ">
+            <div class="bucket img">
+                  <a id="featuredStackSquareImage673837102" href="https://www.npr.org/2018/12/06/673837102/court-filing-references-secret-special-counsel-investigation-heres-what-it-might"  data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/12\/06\/673837102\/court-filing-references-secret-special-counsel-investigation-heres-what-it-might"}' ><img src="https://media.npr.org/assets/img/2018/12/05/gettyimages-883653676_sq-31157ff31fefb824e9100fe9b42d324893104f34-s100-c15.jpg" data-original="https://media.npr.org/assets/img/2018/12/05/gettyimages-883653676_sq-31157ff31fefb824e9100fe9b42d324893104f34-s100.jpg" class="img lazyOnLoad"  alt="Court Filing References Secret Special Counsel Investigation. Here's What It Might Be" /></a>         <div class="bucketblock">
+                        <h3 class="slug"><a href="https://www.npr.org/sections/national-security/">National Security </a></h3>
+            <h3><a href="https://www.npr.org/2018/12/06/673837102/court-filing-references-secret-special-counsel-investigation-heres-what-it-might"  data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/12\/06\/673837102\/court-filing-references-secret-special-counsel-investigation-heres-what-it-might"}' >Court Filing References Secret Special Counsel Investigation. Here's What It Might Be</a></h3>
+         </div>
+         
+<!-- END CLASS="BUCKETBLOCK" -->
+      </div>
+      
+<!-- END CLASS="BUCKET IMG" -->
+   </div>
+   
+<!-- END ID="RES677592531" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+   <p>The judge later said he was merely asking the questions, not drawing any conclusions.</p>   <p>Flynn, one of nine children from a close-knit family, welcomed several of his siblings when he entered the courtroom. His wife and son sat in the first row, closely observing the proceedings and at times shaking their heads.</p>   <p>The father of one of the prosecutors also secured a seat in the packed courtroom, greeting his son with a handshake during a recess.</p>   <p>The delay in the sentence came as a surprise following the public buildup ahead of the hearing.</p>   <p><a href="https://twitter.com/realDonaldTrump/status/1074993036831191045">In a tweet Tuesday morning</a> prior to the hearing, President Trump had wished Flynn "good luck today." </p>   <p>Trump added: "Will be interesting to see what he has to say, despite tremendous pressure being put on him, about Russian collusion in our great and, obviously, highly successful political campaign. There was no collusion!"</p>   <div id="res677798933" class="bucketwrap twitter large graphic624" aria-label="Tweet">
+            <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Good luck today in court to General Michael Flynn. Will be interesting to see what he has to say, despite tremendous pressure being put on him, about Russian Collusion in our great and, obviously, highly successful political campaign. There was no Collusion!</p>&mdash; Donald J. Trump (@realDonaldTrump) <a href="https://twitter.com/realDonaldTrump/status/1074993036831191045?ref_src=twsrc%5Etfw">December 18, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+   </div>
+   
+<!-- END ID="RES677798933" CLASS="BUCKETWRAP TWITTER LARGE GRAPHIC624" ARIA-LABEL="TWEET" -->
+   <p><strong>Talks with the Russian ambassador and the aftermath</strong></p>   <p>The root of Flynn's legal troubles stems from conversations he had as part of the Trump administration-in-waiting, a team that had won the 2016 election but not yet assumed office.</p>   <p>As the outgoing Obama administration sought to punish Russia for its attack on the election, Flynn was negotiating with Moscow's then-ambassador to the United States.</p>   <p>Obama ordered the ejection of a number of Russian diplomats and the closure of facilities they used in New York and Maryland. </p>   <p>In concert with the transition team, Flynn asked then-Ambassador Sergey Kislyak not to escalate any response that Moscow might make to the punitive measures being imposed by Obama.</p>   <div id="res677590915" class="bucketwrap internallink mediapromo primary">
+            <h4 class="internallink__slug">National Security</h4>
+      <h2 class="internallink__title">The Rise And Fall Of Michael Flynn</h2>
+      <article id="res673857754" class="bucketwrap resaudio" aria-label="audio-module"><div class="audio-module">
+      <h4 class="audio-module-title">The Rise And Fall Of Michael Flynn</h4>
+   <div class="audio-module-controls-wrap" data-audio='{"uid":"673857739:673857754","available":true,"duration":236,"title":"The Rise And Fall Of Michael Flynn","audioUrl":"https:\/\/ondemand.npr.org\/anon.npr-mp3\/npr\/atc\/2018\/12\/20181205_atc_the_rise_and_fall_of_michael_flynn.mp3?orgId=1&topicId=1122&d=236&p=2&story=673857739&siteplayer=true","storyUrl":"https:\/\/www.npr.org\/2018\/12\/05\/673857739\/the-rise-and-fall-of-michael-flynn","slug":"National Security","program":"all things considered","affiliation":"","song":"","artist":"","album":"","track":0,"type":"segment","subtype":"other"}' data-audio-metrics='[]'>
+        <div class="audio-module-controls">
+            <a class="audio-module-listen" href="https://ondemand.npr.org/anon.npr-mp3/npr/atc/2018/12/20181205_atc_the_rise_and_fall_of_michael_flynn.mp3?orgId=1&amp;topicId=1122&amp;d=236&amp;p=2&amp;story=673857739&amp;siteplayer=true&amp;dl=1">
+                <b class="audio-module-listen-inner">
+                    <b class="audio-module-listen-icon icn-play"></b>
+                    <b class="audio-module-listen-text">
+                        <b class="audio-module-cta">Listen</b>
+                        <b class="audio-module-listen-duration">
+                            <span>&middot; </span>
+                            <span>3:56</span>
+                        </b>
+                    </b>
+                </b>
+            </a>
+
+                <time class="audio-module-duration" datetime="P3M,56S">3:56</time>
+        </div>
+
+
+</div>
+
+   
+    <div class="audio-module-tools">
+        <button class="audio-module-tools-toggle"  data-metrics='{&quot;category&quot;:&quot;audio actions&quot;,&quot;action&quot;:&quot;open more options&quot;,&quot;label&quot;:null,&quot;noninteraction&quot;:true}' >
+            <b class="icn-toggle"></b>
+            <b class="label">Toggle more options</b>
+        </button>
+        <ul class="audio-module-more-tools">
+                <li class="audio-tool audio-tool-download"><a href="https://ondemand.npr.org/anon.npr-mp3/npr/atc/2018/12/20181205_atc_the_rise_and_fall_of_michael_flynn.mp3?orgId=1&amp;topicId=1122&amp;d=236&amp;p=2&amp;story=673857739&amp;siteplayer=true&amp;dl=1"  data-metrics='{&quot;category&quot;:&quot;audio actions&quot;,&quot;action&quot;:&quot;download audio&quot;,&quot;label&quot;:&quot;673857739&quot;,&quot;noninteraction&quot;:true}'  ><b class="icn-download"></b><b class="audio-tool-label">Download</b></a>
+                </li>
+
+                <li class="audio-tool audio-tool-embed" >
+                    <button data-embed-url="https://www.npr.org/player/embed/673857739/673857754"  data-metrics='{&quot;category&quot;:&quot;audio actions&quot;,&quot;action&quot;:&quot;embed audio&quot;,&quot;label&quot;:&quot;673857739&quot;,&quot;noninteraction&quot;:true}' ><b class="button-inner"><b class="icn-embed"></b><b
+                            class="audio-tool-label">Embed</b></b></button>
+
+                    <div class="audio-embed-overlay">
+                        <button class="btn-close"></button>
+                        <label class="embed-label">
+                            <b class="audio-embed-overlay__icon"></b>
+                            <b class="label">Embed</b>
+                            <input class="embed-url embed-url-no-touch" readonly
+                                   value="<iframe src=&quot;https://www.npr.org/player/embed/673857739/673857754&quot; width=&quot;100%&quot; height=&quot;290&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; title=&quot;NPR embedded audio player&quot;></iframe>">
+                        </label>
+
+                        <b class="embed-url embed-url-touch">
+                            <code><b class="punctuation">&lt;</b>iframe src="https://www.npr.org/player/embed/673857739/673857754" width="100%" height="290" frameborder="0" scrolling="no" title="NPR embedded audio player"&gt;</code>
+                        </b>
+
+                    </div>
+                </li>
+
+                <li class="audio-tool audio-tool-transcript">
+                  <a href="https://www.npr.org/templates/transcript/transcript.php?storyId=673857739"  data-metrics='{&quot;category&quot;:&quot;audio actions&quot;,&quot;action&quot;:&quot;click transcript&quot;,&quot;label&quot;:&quot;673857739&quot;,&quot;noninteraction&quot;:true}' >
+                    <b class="icn-transcript"></b>
+                    <b class="audio-tool-label">Transcript</b>
+                  </a>
+                </li>
+        </ul>
+    </div>
+</div>
+</article>
+   </div>
+   
+<!-- END ID="RES677590915" CLASS="BUCKETWRAP INTERNALLINK MEDIAPROMO PRIMARY" -->
+   <p>That may technically have violated a never-enforced law that bars Americans without official power from negotiating with foreign governments or their agents, but it was Flynn and his compatriots' accounts of the talks that caused the most pressing political trouble.</p>   <p>First, word of Flynn's conversation made its way into <em>The Washington Post</em>.</p>   <p>Flynn responded by denying that he and Kislyak had talked about the sanctions, including to then-Vice President-elect Pence, who repeated the denial on TV.  </p>   <p>Top federal law enforcement officials, however — who knew what had been said from surveillance of Kislyak — feared that Flynn's public denials put Russia in the position of having something with which it could compromise Flynn.</p>   <div id="res677591659" class="bucketwrap internallink insettwocolumn inset2col ">
+            <div class="bucket img">
+                  <a id="featuredStackSquareImage643444815" href="https://www.npr.org/2018/12/09/643444815/all-the-criminal-charges-to-emerge-so-far-from-robert-muellers-investigation"  data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/12\/09\/643444815\/all-the-criminal-charges-to-emerge-so-far-from-robert-muellers-investigation"}' ><img src="https://media.npr.org/assets/img/2018/09/14/gettyimages-699394184_sq-1167adf710eb3307517d2ab174f9c424d263b0e1-s100-c15.jpg" data-original="https://media.npr.org/assets/img/2018/09/14/gettyimages-699394184_sq-1167adf710eb3307517d2ab174f9c424d263b0e1-s100.jpg" class="img lazyOnLoad"  alt="All The Criminal Charges To Emerge So Far From Robert Mueller's Investigation" /></a>         <div class="bucketblock">
+                        <h3 class="slug"><a href="https://www.npr.org/sections/national-security/">National Security </a></h3>
+            <h3><a href="https://www.npr.org/2018/12/09/643444815/all-the-criminal-charges-to-emerge-so-far-from-robert-muellers-investigation"  data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2018\/12\/09\/643444815\/all-the-criminal-charges-to-emerge-so-far-from-robert-muellers-investigation"}' >All The Criminal Charges To Emerge So Far From Robert Mueller's Investigation</a></h3>
+         </div>
+         
+<!-- END CLASS="BUCKETBLOCK" -->
+      </div>
+      
+<!-- END CLASS="BUCKET IMG" -->
+   </div>
+   
+<!-- END ID="RES677591659" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+   <p>The rest of the story has lately been filled in by court filings: Flynn phoned then-Deputy FBI Director Andrew McCabe to talk about something else in late January 2017, and McCabe steered the conversation to Flynn's contact with the Russians.</p>   <p>"LTG Flynn then explained that he had been trying to 'build relationships' with the Russians, and that he had calls in which he 'exchanged condolences,' " McCabe wrote, according to a memo McCabe filed at the time. "He then stated that I probably knew what was said," after which the sentence is redacted.</p>   <p>Two FBI agents visited Flynn at the White House, according to court documents. </p>   <p>They said they wanted him to be at ease and did not warn him that it was a crime to lie to the FBI. "They were concerned that giving the warnings might adversely affect the rapport," according to a report about one of the agents.</p>   <p><strong>Criticism of the Flynn interview</strong></p>   <p>The agents' decision not to remind Flynn that it is a crime to lie to the FBI has become the subject of criticism, as has the sense that the investigators reportedly got when talking to him that he was not lying.</p>   <p><a href="https://twitter.com/realDonaldTrump/status/1073248137320509440">That has prompted Trump</a> and others to charge that <a href="https://www.wsj.com/articles/the-flynn-entrapment-11544658915">the Flynn case amounts to entrapment</a>.</p>   <div id="res677560821" class="bucketwrap twitter large graphic624" aria-label="Tweet">
+            <blockquote class="twitter-tweet"><p lang="en" dir="ltr">They gave General Flynn a great deal because they were embarrassed by the way he was treated - the FBI said he didn’t lie and they overrode the FBI. They want to scare everybody into making up stories that are not true by catching them in the smallest of misstatements. Sad!......</p>&mdash; Donald J. Trump (@realDonaldTrump) <a href="https://twitter.com/realDonaldTrump/status/1073248137320509440?ref_src=twsrc%5Etfw">December 13, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+   </div>
+   
+<!-- END ID="RES677560821" CLASS="BUCKETWRAP TWITTER LARGE GRAPHIC624" ARIA-LABEL="TWEET" -->
+   <p>The office of Justice Department special counsel Robert Mueller <a href="https://apps.npr.org/documents/document.html?id=5635283-Mueller-Flynn-Filing-Dec-14">responded Friday by defending Flynn's questioning</a>. </p>   <p>Mueller's office submitted documents in which it laid out the series of events and asserted that if anyone knew to tell the truth to the FBI, it was Flynn — a career intelligence officer who had previously served as the director of the Defense Intelligence Agency. </p>   <p>And Monday night, Mueller's office filed with the court <a href="https://apps.npr.org/documents/document.html?id=5635282-Flynn-302">the FBI reports memorializing Flynn's interview</a>.</p>   <div id="res677792886" class="bucketwrap statichtml">
+            <iframe src="https://apps.npr.org/documents/document.html?embed=true&id=5635283-Mueller-Flynn-Filing-Dec-14" width="100%" height="555" scrolling="no"></iframe>
+   </div>
+   
+<!-- END ID="RES677792886" CLASS="BUCKETWRAP STATICHTML" -->
+   <p>White House press secretary Sarah Sanders stuck by the administration's criticism of the handling of the interview on Tuesday.</p>   <p>Sanders told reporters that the administration wished Flynn well, but she repeated that the FBI had "ambushed" Flynn. Sanders also said the FBI violated its own protocols in the way it questioned him. </p>   <p><strong>Criticism of the investigators</strong></p>   <p>One of the FBI agents who took part in the interview was Peter Strzok, then a deputy assistant director in the counterintelligence division. </p>   <p>He has become a political albatross around the neck of the FBI following the discovery of outspoken text messages criticizing Trump as a candidate that he exchanged with another FBI employee. </p>   <p>The revelations embarrassed the bureau, and <a href="https://www.npr.org/2018/08/13/638180040/fbi-fires-peter-strzok-political-lightning-rod-who-criticized-trump">Strzok was fired in August</a>. Lisa Page, the FBI attorney with whom Strzok exchanged the incendiary text messages, resigned. McCabe is likewise no longer with the FBI, having been <a href="https://www.npr.org/2018/03/16/571671917/justice-department-fires-embattled-fbi-deputy-director-just-short-of-retirement">fired in March just short of being eligible to retire</a>, a termination <a href="https://www.npr.org/2018/06/12/619269943/lawyer-for-ex-fbi-deputy-director-mccabe-sues-government-over-his-firing">he is fighting in court</a>. </p>   <p>Strzok's role in the investigation <a href="https://twitter.com/realDonaldTrump/status/1074306118367805441">has led to sustained criticism by Trump</a> and his allies that a biased cadre of the conspirators within federal law enforcement are perpetuating the Russia investigation out of political animus. </p>   <div id="res677562514" class="bucketwrap twitter large graphic624" aria-label="Tweet">
+            <blockquote class="twitter-tweet"><p lang="en" dir="ltr">So where are all the missing Text messages between fired FBI agents Peter S and the lovely Lisa Page, his lover. Just reported that they have been erased and wiped clean. What an outrage as the totally compromised and conflicted Witch Hunt moves ever so slowly forward. Want them!</p>&mdash; Donald J. Trump (@realDonaldTrump) <a href="https://twitter.com/realDonaldTrump/status/1074306118367805441?ref_src=twsrc%5Etfw">December 16, 2018</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+   </div>
+   
+<!-- END ID="RES677562514" CLASS="BUCKETWRAP TWITTER LARGE GRAPHIC624" ARIA-LABEL="TWEET" -->
+   <p><strong>Comey defends the FBI's handling of Flynn</strong></p>   <p>Former FBI Director James Comey was asked Monday about the decisions made at the top level of the bureau at the time of the Flynn interview. </p>   <p>Why, for example, as court documents describe, did Comey not tell then-acting Attorney General Sally Yates before the Flynn interview that it was happening?</p>   <div id="res677596751" class="bucketwrap image large">
+            <div class="imagewrap" data-crop-type="">
+    <img src="https://media.npr.org/assets/img/2018/12/17/ap_18351752509815comey_wide-d13f7ea23b9e1469d9560beb7644907663b5d37c-s1100-c15.jpg" data-original="https://media.npr.org/assets/img/2018/12/17/ap_18351752509815comey_wide-d13f7ea23b9e1469d9560beb7644907663b5d37c-s1100.jpg" class="img lazyOnLoad"  alt="" />
+        <div class="enlarge-options">
+            <a class="enlargelink" href="https://media.npr.org/assets/img/2018/12/17/ap_18351752509815comey_wide-d13f7ea23b9e1469d9560beb7644907663b5d37c-s1200.jpg">Enlarge this image</a>
+        </div>
+</div>
+<div class="credit-caption">
+    <div class="caption-wrap">
+        <div class="caption" aria-label="Image caption">
+            <p>
+                Former FBI Director James Comey (right), with his attorney, David Kelley, leaves Capitol Hill Monday after a second closed-door interview with two Republican-led committees investigating what they say was bias at the Justice Department before the 2016 presidential election.
+                
+                <b class="credit" aria-label="Image credit">
+                    
+                    Manuel Balce Ceneta/AP
+                    
+                </b>
+                <b class="hide-caption"><b>hide caption</b></b>
+            </p>
+        </div>
+
+
+            <b class="toggle-caption"><b>toggle caption</b></b>
+    </div>
+
+    <span class="credit" aria-label="Image credit">
+        
+        Manuel Balce Ceneta/AP
+        
+    </span>
+</div>
+<div class="enlarge_measure">
+    <div class="img_wrap">
+        <img data-original="https://media.npr.org/assets/img/2018/12/17/ap_18351752509815comey_wide-d13f7ea23b9e1469d9560beb7644907663b5d37c-s1200.jpg" alt="" />
+    </div>
+</div>
+<div class="enlarge_html">
+    <div class="image_data">
+        <p class="caption">Former FBI Director James Comey (right), with his attorney, David Kelley, leaves Capitol Hill Monday after a second closed-door interview with two Republican-led committees investigating what they say was bias at the Justice Department before the 2016 presidential election.</p>
+        <span class="credit" aria-label="Image credit">
+            
+            Manuel Balce Ceneta/AP
+            
+        </span>
+    </div>
+</div>
+   </div>
+   <p>He meant to, but Yates phoned Comey about something else, and it was during that conversation that the director told her about the Flynn situation.</p>   <p>"When he told her the FBI was interviewing Flynn she was not happy," reads the account released on Friday.</p>   <p>Comey said Monday that he wanted to be clear the FBI was initiating the Flynn interview because it would deny the White House the ability to argue that people like Yates, who were holdovers from the Obama administration, were pursuing Flynn for partisan reasons.</p>   <div id="res677593447" class="bucketwrap internallink insettwocolumn inset2col ">
+            <div class="bucket img">
+                  <a id="featuredStackSquareImage527773206" href="https://www.npr.org/2017/05/15/527773206/what-just-happened-the-james-comey-saga-in-timeline-form"  data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2017\/05\/15\/527773206\/what-just-happened-the-james-comey-saga-in-timeline-form"}' ><img src="https://media.npr.org/assets/img/2017/05/10/ap_17129807287428_sq-6e6123d6a967b91299f33d4558026e23b73c2fd1-s100-c15.jpg" data-original="https://media.npr.org/assets/img/2017/05/10/ap_17129807287428_sq-6e6123d6a967b91299f33d4558026e23b73c2fd1-s100.jpg" class="img lazyOnLoad"  alt="The James Comey Saga, In Timeline Form" /></a>         <div class="bucketblock">
+                        <h3 class="slug"><a href="https://www.npr.org/sections/politics/">Politics </a></h3>
+            <h3><a href="https://www.npr.org/2017/05/15/527773206/what-just-happened-the-james-comey-saga-in-timeline-form"  data-metrics='{"category":"Story to Story","action":"Click Internal Link","label":"https:\/\/www.npr.org\/2017\/05\/15\/527773206\/what-just-happened-the-james-comey-saga-in-timeline-form"}' >The James Comey Saga, In Timeline Form</a></h3>
+         </div>
+         
+<!-- END CLASS="BUCKETBLOCK" -->
+      </div>
+      
+<!-- END CLASS="BUCKET IMG" -->
+   </div>
+   
+<!-- END ID="RES677593447" CLASS="BUCKETWRAP INTERNALLINK INSETTWOCOLUMN INSET2COL " -->
+   <p>What Comey said he didn't expect was that Trump and some powerful Republicans in the House would launch a sustained attack on the FBI itself.</p>   <p>"The FBI's reputation has taken a big hit because the president and his acolytes have lied about it constantly," he told reporters at the Capitol. "In the face of those lies, a whole lot of good people ... believe that nonsense. That's a tragedy."</p>   <p>Comey — like McCabe and Strzok — left the FBI involuntarily when <a href="https://www.npr.org/2017/05/09/527663050/president-trump-fires-fbi-director-james-comey">he was fired by Trump in May 2017</a>, a move that precipitated <a href="https://www.npr.org/2017/05/17/528846598/former-fbi-director-mueller-appointed-special-counsel-to-oversee-russia-probe">the appointment of Mueller as special counsel</a> to take over the FBI investigation of the Russian attack on the 2016 election begun during Comey's tenure. </p>
+</div>
+<div class="share-tools share-tools--secondary" aria-label="Share tools">
+      <ul>
+            <li class="share-tools__service share-tools__service--facebook"><button class="fbStory677558000" data-share-facebook='{"storyId": 677558000 }'  data-metrics='{"action":"Click Facebook","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/12\/18\/677558000\/federal-judge-delays-michael-flynn-sentencing-in-case-of-lying-to-feds"}' ><b class="share-tools__service-name">Facebook</b></button></li>
+      <li class="share-tools__service share-tools__service--twitter"><button class="story677558000" data-share-twitter='{"storyId": 677558000 }'  data-metrics='{"action":"Click Twitter","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/12\/18\/677558000\/federal-judge-delays-michael-flynn-sentencing-in-case-of-lying-to-feds"}' ><b class="share-tools__service-name">Twitter</b></button></li>
+      <li class="share-tools__service share-tools__service--flipboard"><button class="story677558000" data-share-flipboard='{"storyId": 677558000 }'  data-metrics='{"action":"Click Flipboard","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/12\/18\/677558000\/federal-judge-delays-michael-flynn-sentencing-in-case-of-lying-to-feds"}' ><b class="share-tools__service-name">Flipboard</b></button></li>
+      <li class="share-tools__service share-tools__service--email"><button class='share-tools__email-link' data-story-id='677558000'  data-metrics='{"action":"Click Email a Friend","category":"Share Tools","label":"https:\/\/www.npr.org\/2018\/12\/18\/677558000\/federal-judge-delays-michael-flynn-sentencing-in-case-of-lying-to-feds"}' ><b class="share-tools__service-name">Email</b></button></li>
+   </ul>
+</div>
+
+<!-- END CLASS="SHARE-TOOLS SHARE-TOOLS--SECONDARY" ARIA-LABEL="SHARE TOOLS" -->
+<div id="newsletter-acquisition-callout-data" data-newsletter="{&quot;newsletterId&quot;:&quot;news&quot;,&quot;title&quot;:&quot;Daily News&quot;,&quot;marketingHeader&quot;:&quot;Sign Up For The NPR Daily Newsletter&quot;,&quot;frequency&quot;:&quot;each weekday&quot;,&quot;shortDescription&quot;:&quot;Catch up on the latest headlines and unique NPR stories, sent every weekday.&quot;,&quot;contentImage&quot;:&quot;https:\/\/media.npr.org\/assets\/img\/2018\/07\/18\/dailynews-june27-screencap-cropped-small_custom.png&quot;,&quot;staticMarkupDir&quot;:&quot;\/buckets\/topics\/header1001.html&quot;,&quot;brandingDir&quot;:&quot;\/branding\/sections\/news\/&quot;,&quot;brandingLink&quot;:&quot;https:\/\/www.npr.org\/sections\/news\/&quot;}">
+   </div>
+
+<!-- END ID="NEWSLETTER-ACQUISITION-CALLOUT-DATA" DATA-NEWSLETTER="{&QUOT;NEWSLETTERID&QUOT;:&QUOT;NEWS&QUOT;,&QUOT;TITLE&QUOT;:&QUOT;DAILY NEWS&QUOT;,&QUOT;MARKETINGHEADER&QUOT;:&QUOT;SIGN UP FOR THE NPR DAILY NEWSLETTER&QUOT;,&QUOT;FREQUENCY&QUOT;:&QUOT;EACH WEEKDAY&QUOT;,&QUOT;SHORTDESCRIPTION&QUOT;:&QUOT;CATCH UP ON THE LATEST HEADLINES AND UNIQUE NPR STORIES, SENT EVERY WEEKDAY.&QUOT;,&QUOT;CONTENTIMAGE&QUOT;:&QUOT;HTTPS:\/\/MEDIA.NPR.ORG\/ASSETS\/IMG\/2018\/07\/18\/DAILYNEWS-JUNE27-SCREENCAP-CROPPED-SMALL_CUSTOM.PNG&QUOT;,&QUOT;STATICMARKUPDIR&QUOT;:&QUOT;\/BUCKETS\/TOPICS\/HEADER1001.HTML&QUOT;,&QUOT;BRANDINGDIR&QUOT;:&QUOT;\/BRANDING\/SECTIONS\/NEWS\/&QUOT;,&QUOT;BRANDINGLINK&QUOT;:&QUOT;HTTPS:\/\/WWW.NPR.ORG\/SECTIONS\/NEWS\/&QUOT;}" -->
+<div id="callout-end-of-story-mount">
+   </div>
+
+<!-- END ID="CALLOUT-END-OF-STORY-MOUNT" -->
+<aside id="end-of-story-recommendations-mount" class="recommended-stories" aria-label="recommended stories"></aside>
+<!-- END ID="END-OF-STORY-RECOMMENDATIONS-MOUNT" CLASS="RECOMMENDED-STORIES" ARIA-LABEL="RECOMMENDED STORIES" -->
+</article><header class="contentheader contentheader--two" data-metrics='{"category":"National Security"}' ></header><footer id="npr-footer" class="npr-footer" role="contentinfo" aria-label="NPR footer"><div class="npr-footer__content" data-metrics-category="Global Footer" data-metrics-label="Footer">
+    <div class="npr-footer__module-group">
+        <div class="npr-footer__module">
+            <h6 class="npr-footer__header">Read &amp; Listen</h6>
+
+            <ul>
+                <li class="npr-footer__item"><a href="/" data-metrics-action="Click Homepage">Home</a></li>
+                <li class="npr-footer__item"><a href="/sections/news/" data-metrics-action="Click News">News</a></li>
+                <li class="npr-footer__item"><a href="/sections/arts/" data-metrics-action="Click Arts &amp; Life">Arts &amp; Life</a></li>
+                <li class="npr-footer__item"><a href="/music/" data-metrics-action="Click Music">Music</a></li>
+                <li class="npr-footer__item"><a href="/podcasts/" data-metrics-action="Click Podcasts">Podcasts</a></li>
+                <li class="npr-footer__item"><a href="/programs/" data-metrics-action="Click Programs">Programs</a></li>
+            </ul>
+        </div>
+
+        <div class="npr-footer__module">
+            <h6 class="npr-footer__header">Connect</h6>
+
+            <ul>
+                <li class="npr-footer__item"><a href="/newsletters" data-metrics-action="Click Newsletters">Newsletters</a></li>
+                <li class="npr-footer__item"><a href="https://www.facebook.com/NPR/" data-metrics-action="Click Facebook">Facebook</a></li>
+                <li class="npr-footer__item"><a href="https://twitter.com/NPR" data-metrics-action="Click Twitter">Twitter</a></li>
+                <li class="npr-footer__item"><a href="https://www.instagram.com/npr/" data-metrics-action="Click Instagram">Instagram</a></li>
+                <li class="npr-footer__item"><a href="https://www.npr.org/contact" data-metrics-action="Click Contact">Contact</a></li>
+                <li class="npr-footer__item"><a href="https://help.npr.org" data-metrics-action="Click Help">Help</a></li>
+            </ul>
+        </div>
+
+        <div class="npr-footer__module">
+            <h6 class="npr-footer__header">About NPR</h6>
+
+            <ul>
+                <li class="npr-footer__item"><a href="/about/" data-metrics-action="Click Overview">Overview</a></li>
+                <li class="npr-footer__item"><a href="/about-npr/178660742/public-radio-finances" data-metrics-action="Click Finances">Finances</a></li>
+                <li class="npr-footer__item"><a href="/about-npr/179803822/people-at-npr" data-metrics-action="Click People">People</a></li>
+                <li class="npr-footer__item"><a href="/series/750003/press-room/" data-metrics-action="Click Press">Press</a></li>
+                <li class="npr-footer__item"><a href="/sections/ombudsman/" data-metrics-action="Click Ombudsman">Ombudsman</a></li>
+                <li class="npr-footer__item"><a href="/corrections/" data-metrics-action="Click Corrections">Corrections</a></li>
+            </ul>
+        </div>
+
+        <div class="npr-footer__module">
+            <h6 class="npr-footer__header">Get Involved</h6>
+
+            <ul>
+                <li class="npr-footer__item"><a href="/series/750002/support-public-radio" data-metrics-action="Click Support Public Radio">Support Public Radio</a></li>
+                <li class="npr-footer__item"><a href="/about-npr/186948703/corporate-sponsorship" data-metrics-action="Click Sponsor NPR">Sponsor NPR</a></li>
+                <li class="npr-footer__item"><a href="/careers/" data-metrics-action="Click NPR Careers">NPR Careers</a></li>
+                <li class="npr-footer__item"><a href="https://shop.npr.org/" data-metrics-action="Click NPR Shop">NPR Shop</a></li>
+                <li class="npr-footer__item"><a href="https://www.nprpresents.org" data-metrics-action="Click NPR Events">NPR Events</a></li>
+                <li class="npr-footer__item"><a href="/about-npr/177066727/visit-npr" data-metrics-action="Click Visit NPR">Visit NPR</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="npr-footer__module npr-footer__module--secondary">
+        <ul>
+            <li class="npr-footer__item"><a href="/about-npr/179876898/terms-of-use" data-metrics-action="Click Terms of Use">Terms of Use</a></li>
+            <li class="npr-footer__item"><a href="/about-npr/179878450/privacy-policy" data-metrics-action="Click Privacy">Privacy</a></li>
+            <li class="npr-footer__item"><a href="/about-npr/179878450/privacy-policy#yourchoices" data-metrics-action="Click Your Privacy Choices">Your Privacy Choices</a></li>
+            <li class="npr-footer__item"><a href="https://text.npr.org/" data-metrics-action="Click Text Only">Text Only</a></li>
+            <li class="npr-footer__item"><span class="copy-year"></span></li>
+        </ul>
+    </div>
+</div></footer></section>   <div id="main-sidebar">
+            <aside id="ad-standard-wrap" aria-label="advertisement">
+    
+
+    <div id="ad-standard-News_National_National_Security" class="ad-standard" data-ad-config='{"network":"\/6735\/n6735","site":{"default":"NPR","mobile":"NPRMOBILE"},"zone":"News_National_National_Security","targets":{"testserver":"false","storyId":"677558000","program":"All_Things_Considered","agg":["312150170","191676894","434975886"]},"location":"standard","deferred":false,"isBetweenContent":false,"isAggSponsorship":false,"borderClass":""}'></div>
+    <p class="left">NPR thanks our sponsors</p><p class="right"><a href="/about-npr/186948703/corporate-sponsorship">Become an NPR sponsor</a></p>
+
+</aside>
+   </div>
+   
+<!-- END ID="MAIN-SIDEBAR" -->
+</div>
+
+<!-- END ID="WRAPPER" -->
+<script type="text/javascript">
+   (function () {
+    var loadPageJs = function () { webpackJsonp([85,27],{0:function(n,t,c){n.exports=c(1765)},1765:function(n,t,c){"use strict";c.p=NPR.serverVars.webpackPublicPath,function(){var n=2,t=function(){--n<1&&function(n){c(36),c(1510),c(252),c(355),c(240),c(569),c(352),c(1514),c(351),c(1513),c(1512),c(1511),c(1362),c(395),c(2188)}(c)}.bind(this);c.e(0,t),c.e(3,t)}.call(this)}}); };
+    if (document.readyState === 'complete') {
+        loadPageJs();
+    } else {
+        window.addEventListener('load', function load() {
+            window.removeEventListener('load', load, false);
+            loadPageJs();
+        });
+    }
+})();
+</script>
+</main><noscript><iframe style="display:none;padding:0;margin:0;" width="0" height="0" src="//20655831p.rfihub.com/ca.html?rb=3035&ca=20501671&ra=gtmcb"></iframe></noscript><noscript><iframe><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1621557368158968&ev=PageView&noscript=1" /></iframe></noscript><script type='text/javascript'>
+    var _sf_async_config = _sf_async_config || {};
+    /** CONFIGURATION START **/
+    _sf_async_config.uid = '18888';
+    _sf_async_config.domain = NPR.ServerConstants.cbHost;
+    _sf_async_config.useCanonical = true;
+
+    /** CONFIGURATION END **/
+    (function() {
+        function loadChartbeat() {
+            // Wait until the metric for chartbeat have been setup
+            // in templates/javascript/metrics/chartbeat.js
+            if( !!NPR.ChartbeatLoaded) {
+                var e = document.createElement('script');
+                e.setAttribute('language', 'javascript');
+                e.setAttribute('type', 'text/javascript');
+                e.setAttribute('src', 'https://static.chartbeat.com/js/chartbeat.js');
+                document.body.appendChild(e);
+            } else {
+                setTimeout(loadChartbeat, 1000);
+            }
+        }
+
+        var oldonload = window.onload;
+        window.onload = (typeof window.onload != 'function') ?
+                loadChartbeat : function() {
+            oldonload();
+            window._sf_endpt = (new Date()).getTime();
+            loadChartbeat();
+        };
+    })();
+</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"ece810d90e","applicationID":"3472094","transactionName":"Y1NRZkQDV0JRAkAPWloZZkBfTU1UXRFYB0FRRRxRWQxNQ18NWANHRxlERUFMSVlA","queueTime":0,"applicationTime":173,"atts":"TxRGEAwZRB0SABZcTklL","errorBeacon":"bam.nr-data.net","agent":""}</script></body></html>

@@ -1,0 +1,14 @@
+#####
+
+Tweet, Reply, Retweet
+
+
+if(id_str_user in follow )
+    - original
+    - original retweet
+    - original reply
+
+
+if Reply -> save tweet na base tweets-Reply
+
+if retweet -> discard
