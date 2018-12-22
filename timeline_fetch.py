@@ -45,17 +45,19 @@ def find_user_tweets(id_user, id_reply_ref):
                 else:
                     text_full =  tweet['full_text']
                     
-                    db_init.Extra_User_Tweet(
-                        #id=tweet['id'],
-                        id_usuario=id_user,
-                        text_full=text_full,
-                        created_at= parser.parse(tweet['created_at']),
-                        tweet_reply_ref = id_reply_ref
-                    )
-                    status = "OK"
+                db_init.Extra_User_Tweet(
+                    #id=tweet['id'],
+                    id_usuario=id_user,
+                    text_full=text_full,
+                    created_at= parser.parse(tweet['created_at']),
+                    tweet_reply_ref = id_reply_ref
+                )
+                status = "OK"
+            else:
+                status = "ERRO ID"
         time.sleep(1)
     except TwitterApiError:
-        status = "Erro"
+        status = "ERRO"
     return status
 
     
