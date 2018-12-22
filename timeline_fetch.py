@@ -26,8 +26,8 @@ def find_tweets_to_fecth():
 
 @db_session
 def update_tweets(list_tweets):
+    print(len(list_tweets), " tweets do usuario") #id_usuario
     for tweet in list_tweets:
-        print(tweet.id) #id_usuario
         status = find_user_tweets(tweet.id_usuario, tweet.id)
         db_init.Tweet_Reply[tweet.id].fetch_status = status
         commit()
@@ -35,7 +35,7 @@ def update_tweets(list_tweets):
 @db_session
 def find_user_tweets(id_user, id_reply_ref):
     try:
-        response_timeline = resource_timeline.get(user_id=id_user, count=100, include_rts=False,  tweet_mode='extended')
+        response_timeline = resource_timeline.get(user_id=id_user, count=200, include_rts=False,  tweet_mode='extended')
         for tweet in response_timeline.data:
             if 'id' in tweet:
 
@@ -52,12 +52,10 @@ def find_user_tweets(id_user, id_reply_ref):
                         created_at= parser.parse(tweet['created_at']),
                         tweet_reply_ref = id_reply_ref
                     )
-                    print("tweet do usuario -> " ,id_user)
                     status = "OK"
         time.sleep(1)
     except TwitterApiError:
         status = "Erro"
-
     return status
 
     

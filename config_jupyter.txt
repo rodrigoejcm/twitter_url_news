@@ -1,0 +1,19 @@
+
+
+https://towardsdatascience.com/running-jupyter-notebook-in-google-cloud-platform-in-15-min-61e16da34d52
+
+pip isnstall jupyter 
+
+jupyter notebook --generate-config
+
+vi ~/.jupyter/jupyter_notebook_config.py
+
+# JupyterApp(Application) configuration
+c = get_config()
+c.NotebookApp.ip = "0.0.0.0"
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 5000
+
+ESC :wq para salvar e sair
+
+jupyter-notebook --no-browser --port=5000

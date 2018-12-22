@@ -65,7 +65,7 @@ class News(db.Entity):
     url_original = Required(str)
     tweet_id = Required(int, size=64)
     url_id = Required(int, size=32)
-    authors = Optional(str, nullable=True)
+    authors = Optional(LongStr,nullable=True)
     date = Optional(str, nullable=True)
     meta = Optional(str, nullable=True)
     title = Optional(str, nullable=True)
