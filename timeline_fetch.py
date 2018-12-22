@@ -35,9 +35,9 @@ def update_tweets(list_tweets):
 @db_session
 def find_user_tweets(id_user, id_reply_ref):
     try:
+        status = "ERRO - NO TWEETS"
         response_timeline = resource_timeline.get(user_id=id_user, count=200, include_rts=False,  tweet_mode='extended')
         for tweet in response_timeline.data:
-            status = "ERRO - NO TWEETS"
             if 'id' in tweet:
 
                 truncated = tweet['truncated']
