@@ -3,9 +3,10 @@ import psutil
 from pprint import pprint as pp
 from hurry.filesize import size
 import time 
+from pass_tw import TOKEN_BOT
 
 
-bot = telegram.Bot(token='')
+bot = telegram.Bot(token=TOKEN_BOT)
 chat_id = "-352161746"
 
 while True:
