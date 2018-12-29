@@ -16,7 +16,8 @@ chat_id = "-352161746"
 @sched.scheduled_job('interval', seconds=3600)
 def timed_job():
     space = psutil.disk_usage('/')
-    msg = "RUNNING \n USED: " + size(space.used) +" - " + str(space.percent) + "%% \n" + "FREE: " + size(space.free) + "\n"
+    memo = psutil.virtual_memory()
+    msg = "RUNNING \nMEMORY:" + str(memo.percent) + "\nUSED: " + size(space.used) +" - " + str(space.percent) + "%% \n" + "FREE: " + size(space.free) + "\n"
     bot.send_message(chat_id=chat_id, text=msg)
 
 
