@@ -26,7 +26,7 @@ def save_news(article,tweet,url_id,original_url,status,filename):
         ## SAVE NEWS
         db_init.News(
             url_source = article.url[:254],
-            url_original = original_url,
+            url_original = original_url[:254],
             tweet_id = tweet.id,
             url_id = url_id,
             authors = str(article.authors),
