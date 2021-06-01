@@ -53,6 +53,6 @@ tinysegmenter==0.3
 tldextract==2.2.0
 typed-ast==1.1.0
 Unidecode==1.0.22
-urllib3==1.23
+urllib3==1.26.5
 Werkzeug==0.12.2
 wrapt==1.10.11
