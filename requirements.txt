@@ -28,7 +28,7 @@ matplotlib==3.0.0
 mccabe==0.6.1
 newspaper3k==0.2.8
 nltk==3.4
-numpy==1.15.2
+numpy==1.22.0
 oauthlib==2.1.0
 pandas==0.23.4
 Pillow==5.3.0
